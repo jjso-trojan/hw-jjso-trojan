@@ -4,31 +4,33 @@
 using namespace std;
 
 // Implement below
-bool are_paren_balanced(const string& expression);
+bool are_paren_balanced(const string &expression);
 
-// We have suggested a helper method, but feel free to write whatever you see fit
-bool are_paren_balanced(const string& expression, size_t& i, char expected_closing);
+// We have suggested a helper method, but feel free to write whatever you see
+// fit
+bool are_paren_balanced(const string &expression, size_t &i,
+                        char expected_closing);
 
 // Do not change this method
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
 
-    // Check if an expression has been passed to the program
-    if (argc != 2) {
-        cerr << "error: expected expression to check!" << endl;
-        return -1;
-    }
+  // Check if an expression has been passed to the program
+  if (argc != 2) {
+    cerr << "error: expected expression to check!" << endl;
+    return -1;
+  }
 
-    // The second argument is the expression string in the format specified and
-    // promised in the assignment page. You do not need to do any error checking
-    // except for checking the parentheses.
-    string expression(argv[1]);
-    if (are_paren_balanced(expression)) {
-        cout << "correct" << endl;
-    } else {
-        cout << "incorrect" << endl;
-    }
+  // The second argument is the expression string in the format specified and
+  // promised in the assignment page. You do not need to do any error checking
+  // except for checking the parentheses.
+  string expression(argv[1]);
+  if (are_paren_balanced(expression)) {
+    cout << "correct" << endl;
+  } else {
+    cout << "incorrect" << endl;
+  }
 
-    return 0;
+  return 0;
 }
 
 // Some notes:
@@ -37,56 +39,54 @@ int main(int argc, char* argv[]) {
 //   prevent any leftover debug statements from confusing the automated
 //   grading and will make sure output is guaranteed to be written to the
 //   terminal in case your program crashes.
-bool are_paren_balanced(const string& expression) {
-    size_t i = 0;
-    bool paren = true;
-    while(i<expression.size()){
-        if(expression[i]=='('){
-            paren = are_paren_balanced(expression, ++i,')');
-            if(paren == false){
-                break;
-            }
-        }
-        else if(expression[i]=='['){
-            paren = are_paren_balanced(expression, ++i, ']');
-            if(paren == false){
-                break;
-            }
-        }
-        else if(expression[i]==']'||expression[i]==')'){
-            paren = false;
-            break;
-        }
-        i++;
+bool are_paren_balanced(const string &expression) {
+  size_t i = 0;
+  bool paren = true;
+  while (i < expression.size()) {
+    if (expression[i] == '(') {
+      paren = are_paren_balanced(expression, ++i, ')');
+      if (paren == false) {
+        break;
+      }
+    } else if (expression[i] == '[') {
+      paren = are_paren_balanced(expression, ++i, ']');
+      if (paren == false) {
+        break;
+      }
+    } else if (expression[i] == ']' || expression[i] == ')') {
+      paren = false;
+      break;
     }
-    return paren;
+    i++;
+  }
+  return paren;
 }
 
-bool are_paren_balanced(const string& expression, size_t& i, char expected_closing){
-    bool paren;
-    while(i<expression.size()){
-        if(expression[i]=='('){
-            paren = are_paren_balanced(expression, ++i,')');
-            if(paren == false){
-                break;
-            }
-        }
-        else if(expression[i]=='['){
-            paren = are_paren_balanced(expression, ++i, ']');
-            if(paren==false){
-                break;
-            }
-        }
-        else if((expression[i]==']' && expected_closing== ')')||(expression[i]==')' && expected_closing==']')){
-            paren = false;
-            break;
-        }
-        else if((expression[i]==']' && expected_closing== ']')||(expression[i]==')' && expected_closing==')')){
-            paren = true;
-        }
-        i++;
+bool are_paren_balanced(const string &expression, size_t &i,
+                        char expected_closing) {
+  bool paren;
+  while (i < expression.size()) {
+    if (expression[i] == '(') {
+      paren = are_paren_balanced(expression, ++i, ')');
+      if (paren == false) {
+        break;
+      }
+    } else if (expression[i] == '[') {
+      paren = are_paren_balanced(expression, ++i, ']');
+      if (paren == false) {
+        break;
+      }
+    } else if ((expression[i] == ']' && expected_closing == ')') ||
+               (expression[i] == ')' && expected_closing == ']')) {
+      paren = false;
+      break;
+    } else if ((expression[i] == ']' && expected_closing == ']') ||
+               (expression[i] == ')' && expected_closing == ')')) {
+      paren = true;
     }
-    return paren;
+    i++;
+  }
+  return paren;
 }
 // Add any additional function implementations here.
 //
