@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1598993055 source:c:\users\joshu\schoolwork\csci104\hw-jjso-trojan\hw1\rational\rational.cpp
+	"rational.h"
+	<stdexcept>
+	<cmath>
+	<numeric>
+
+1599095576 c:\users\joshu\schoolwork\csci104\hw-jjso-trojan\hw1\rational\rational.h
+	<iostream>
+
+1599068485 source:c:\users\joshu\schoolwork\csci104\hw-jjso-trojan\hw1\rational\rational_test.cpp
+	"rational.h"
+	<iostream>
+	<sstream>
+
