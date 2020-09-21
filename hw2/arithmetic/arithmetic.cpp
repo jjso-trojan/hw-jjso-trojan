@@ -169,7 +169,6 @@ int evaluate(std::string expression) {
     // TODO: if the top token is of TokenKind::RP, reduce(work).
     if (head.kind == TokenKind::RP) {
       reduce(work);
-      cout << work << endl;
     }
     // TODO: otherwise, push the top token onto work.
     else {
